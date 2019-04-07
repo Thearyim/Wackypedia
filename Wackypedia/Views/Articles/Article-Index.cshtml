@@ -1,0 +1,18 @@
+@{
+    Layout = "_Layout";
+}
+
+@Html.Partial("_Header")
+
+<h3>Articles</h3>
+<hr />
+@foreach (var article in Model)
+{
+    <p>
+        <a href="/articles/@article.GetId()">@article.GetTitle()</a>
+        <div style="margin-top:3px;">@article.GetPartialContent()</div>
+        <div>(by @article.GetAuthorNames())</div>
+    </p>
+}
+
+<button class="btn btn-success">Return home</button>

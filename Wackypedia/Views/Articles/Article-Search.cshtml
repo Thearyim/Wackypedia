@@ -1,0 +1,31 @@
+@{
+    Layout = "_Layout";
+}
+
+@Html.Partial("_Header")
+
+<div id="searchBar">
+    <div>
+        <form action="/articles/search" method="post">
+            <input id="searchString" type="text" name="searchString" />
+            <button style="color: #424242">Search</button>
+            <p id="answer">i.e. subject/author</p>
+        </form>
+    </div>
+</div>
+
+@if (@Model.Count == 0)
+{
+    <h3>No articles have been added yet!</h3>
+}
+
+<form method="post">
+    <ul>
+        @foreach (var article in Model)
+        {
+            <li><a href="/articles/@article.GetId()">@article.GetDescription()</a></li>
+        }
+    </ul>
+</form>
+
+<h3><a href='/'>Return home</a></h3>

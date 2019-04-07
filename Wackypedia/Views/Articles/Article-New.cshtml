@@ -1,0 +1,30 @@
+@{
+    Layout = "_Layout";
+}
+
+@Html.Partial("_Header")
+
+<h1>Add a Article Below</h1>
+<div id="section" class="panel panel-info">
+    <div class="panel-heading">
+        <h2 class="panel-title">New Article</h2>
+    </div>
+</div>
+
+<form action="/articles" method="post">
+    <label for="articleTitle">Subject:</label>
+    <input id="articleTitle" name="articleTitle" type="text" value=""> <br />
+
+    <label for="articleAuthor">Author:</label>
+    <input id="articleAuthor" name="articleAuthor" type="text" value=""> <br />
+
+    <label for="articleContent">Content:</label>
+    <textarea id="articleContent" name="articleContent" type="text" value="" rows="30" cols="50">
+    </textarea>
+    <br />
+
+    <button type="submit">Add</button>
+</form>
+
+<p><a href="/">Return home</a></p>
+<p><a href="/articles">Back to view articles</a></p>

@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+
+@Html.Partial("_Header")
+
+<h2>@Model.GetTitle()</h2>
+<h5><i>authors - @Model.GetAuthorNames()</i></h5>
+<div id="contentDisplay" style="width:100%;">
+    <a href="#">Edit</a>
+    @foreach (var articleSection in Model.GetSections())
+    {
+        <div>
+            <span style="font-size:13pt;font-weight:bold;">@articleSection.GetTitle()</span>
+        </div>
+        <div style="margin-bottom:20px;">
+            <textarea style="width:100%;border:none">@articleSection.GetContent()</textarea>
+        </div>
+    }
+</div>
+
+<div id="contentEdit" style="width:100%;height:100%;">
+    <form action="/articles/@Model.GetId()" method="post">
+        <button type="submit" class="btn btn-success">Save</button>
+        <textarea id="allContent" name="editedContent" rows="500" style="width:100%;height:100%;border:none">
+            @Model.GetContent().Trim()
+        </textarea>
+    </form>
+</div>
